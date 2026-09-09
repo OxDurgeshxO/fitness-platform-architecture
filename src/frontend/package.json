@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && pnpm copy:env",
-    "copy:env": "node -e \"const fs=require('fs'); fs.copyFileSync('env.json', 'dist/env.json')\",
+    "copy:env": "node -e \"require('fs').copyFileSync('env.json', 'dist/env.json')\"",
     "typecheck": "tsc --noEmit",
     "check": "biome check src",
     "fix": "biome check --write src"
