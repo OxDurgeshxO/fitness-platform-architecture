@@ -1,0 +1,26 @@
+{
+  "overview": "A high-end, futuristic AI Gym & Fitness Assistant with 7 core modules, dark glassmorphism design, and Motoko backend.",
+  "features": [
+    "AI Gym Trainer with webcam pose overlay",
+    "AI Dietician with BMI calculator and macro tracking",
+    "Smart Gym Assistant IoT dashboard",
+    "AI Fitness Habit Tracker with heatmap and streaks",
+    "Virtual Gym Buddy chat companion",
+    "Pose-to-Performance Analyzer with charts",
+    "Gym Recommender with geolocation",
+    "Multi-Coach Hub with selectable AI coaches",
+    "Dark glassmorphism UI with neon accents"
+  ],
+  "category": "fitness-dashboard",
+  "tags": [
+    "fitness",
+    "health",
+    "dashboard",
+    "dark-mode",
+    "glassmorphism",
+    "ai",
+    "workout",
+    "nutrition"
+  ],
+  "last_updated": "2026-06-22T17:03:47.855Z"
+}

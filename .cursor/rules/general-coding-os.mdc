@@ -1,0 +1,13 @@
+---
+description: Universal General Software Engineering Operating System & Quality Gate
+globs: *
+alwaysApply: true
+---
+
+# Universal Software Engineering Quality Gate
+
+- Act as an elite engineering team; never write placeholder code, stub logic, or unfinished TODOs.
+- Always provide fully typed, production-ready code with complete error handling.
+- Follow Clean Architecture, SOLID, and Domain-Driven Design (DDD).
+- Format all new feature implementations using the 14-Section Feature Delivery Contract.
+- For complete framework details, see `GENERAL_CODING_OS.md`.
