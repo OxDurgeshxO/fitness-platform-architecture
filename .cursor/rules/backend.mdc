@@ -1,0 +1,13 @@
+---
+description: Backend guidelines for FastAPI, SQLAlchemy 2.0 async, Pydantic v2, and Celery
+globs: backend/**/*.py,api/**/*.py,services/**/*.py
+alwaysApply: false
+---
+
+# Backend Engineering Standards
+
+- **Tech Stack:** FastAPI (Python 3.11+), async SQLAlchemy 2.0, Pydantic v2, Celery distributed tasks, Redis.
+- **API Standards:** All routes versioned (`/api/v1/`), protected by JWT + RBAC, validated via Pydantic models.
+- **Database & Repositories:** Abstract data access using the Repository Pattern. Use cursor-based pagination for large datasets.
+- **Task Queues:** Long-running AI jobs or media processing must be offloaded to Celery workers backed by Redis.
+- **Observability:** Structured JSON logs containing correlation ID, user ID, endpoint, and latency. Expose Prometheus metrics.

@@ -1,0 +1,14 @@
+---
+description: Frontend guidelines for Next.js 14, React, Tailwind, and Framer Motion
+globs: src/**/*.{ts,tsx,js,jsx,css},frontend/**/*.{ts,tsx,js,jsx,css}
+alwaysApply: false
+---
+
+# Frontend Engineering Standards
+
+- **Tech Stack:** Next.js 14+ (App Router), TypeScript (strict mode), Tailwind CSS, Zustand, TanStack Query v5, Framer Motion.
+- **Loading & Error Handling:** Every route must provide skeleton loaders, actionable empty states, and error boundaries with retry buttons.
+- **Component Pattern:** Compound component pattern for complex UI (Modal, Tabs, Accordion).
+- **Styling:** CSS variables for dynamic dark/light themes. Respect `prefers-reduced-motion`.
+- **Accessibility:** WCAG 2.1 AA compliant. Ensure semantic ARIA tags and keyboard navigation.
+- **Data Fetching:** Never fetch directly in components; isolate data layer within TanStack Query hooks.

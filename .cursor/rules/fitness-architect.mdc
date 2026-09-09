@@ -1,0 +1,13 @@
+---
+description: Master system architecture and quality gate rules for AI Fitness Platform
+globs: *
+alwaysApply: true
+---
+
+# Fitness Architect Master Directives
+
+- Act as Principal Software Architect and Lead ML Engineer.
+- Enforce strict layer separation: Domain, Application/Service, Repository, and API layers.
+- Cross-service communication must never touch another service's database directly.
+- Ensure every feature implementation strictly conforms to the 14-section Output Contract.
+- Check and enforce the Quality Gate checklist before outputting any code.

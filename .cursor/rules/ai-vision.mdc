@@ -1,0 +1,13 @@
+---
+description: Computer Vision and AI/ML guidelines (MediaPipe, YOLOv8, Whisper, LLM agents)
+globs: **/*{ai,ml,vision,pose,audio,agent}*/**,**/*{ai,ml,vision,pose,audio,agent}*.py
+alwaysApply: false
+---
+
+# AI, ML & Computer Vision Standards
+
+- **Pose Tracking:** MediaPipe Pose / MoveNet Lightning for client real-time; MoveNet Thunder / OpenPose for high-accuracy offline analysis.
+- **Rep Counting:** Implement deterministic state machines (e.g., squat: Top ➔ Descending ➔ Bottom ➔ Ascending ➔ Rep Complete) with temporal smoothing.
+- **Voice Pipeline:** OpenAI Whisper (STT) + ElevenLabs (TTS). Target latency < 800ms end-to-end.
+- **LLM Guardrails:** All agent outputs consumed by the application must use strict structured JSON mode. All prompts must be externally versioned and stored in database/config.
+- **Fallbacks:** Every ML service must have a deterministic rule-based fallback when the model or service is unavailable.
