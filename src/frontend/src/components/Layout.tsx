@@ -26,7 +26,11 @@ export function Layout() {
 
   return (
     <CoachContext.Provider value={{ selectedCoach, setSelectedCoach }}>
-      <div className="flex h-screen overflow-hidden bg-background">
+      <div className="flex h-screen overflow-hidden bg-background relative">
+        {/* BETA AUDIT PREVIEW BADGE */}
+        <div style={{ position: 'fixed', bottom: '16px', right: '16px', zIndex: 99999, background: 'rgba(239, 68, 68, 0.95)', color: '#ffffff', padding: '6px 14px', borderRadius: '9999px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.05em', boxShadow: '0 4px 14px rgba(0,0,0,0.3)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.2)' }}>
+          🏷️ BETA AUDIT PREVIEW
+        </div>
         <Sidebar
           collapsed={sidebarCollapsed}
           onToggle={() => setSidebarCollapsed((c) => !c)}

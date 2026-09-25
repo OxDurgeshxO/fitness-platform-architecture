@@ -15,9 +15,13 @@ process.env.STORAGE_GATEWAY_URL =
 export default defineConfig({
   logLevel: "error",
   build: {
+    target: "esnext",
     emptyOutDir: true,
     sourcemap: false,
     minify: false,
+    rollupOptions: {
+      external: ["@caffeineai/object-storage"],
+    },
   },
   css: {
     postcss: "./postcss.config.js",

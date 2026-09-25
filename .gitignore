@@ -1,37 +1,22 @@
-# Node / Dependencies
+# Dependencies
 node_modules/
 .pnpm-store/
-.npm
-.yarn
 
-# Build Outputs
+# Build artifacts
 dist/
 build/
-out/
-.next/
+.dfx/
+.mops/
+.cache/
 
-# Environment variables & secrets
+# Environment & Logs
+*.log
+.env*
 .env
 .env.local
-.env.*.local
-*.pem
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
 
 # IDE & OS
 .DS_Store
 Thumbs.db
-*.swp
-*.swo
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-
-# Test & Coverage
-coverage/
-.nyc_output/
+.vscode/
+.idea/
