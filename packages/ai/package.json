@@ -1,0 +1,21 @@
+{
+  "name": "@fitness/ai",
+  "version": "1.0.0",
+  "description": "Structured AI coaching agent, versioned prompt registry, and medical safety guardrails",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "@fitness/types": "workspace:*",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "@types/node": "^22.13.0"
+  }
+}
