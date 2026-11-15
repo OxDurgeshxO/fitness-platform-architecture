@@ -56,6 +56,24 @@ services:
     volumes:
       - ./apps/api:/app
 
+  realtime:
+    build:
+      context: .
+      dockerfile: ./apps/realtime-service/Dockerfile
+    container_name: ai_gym_realtime
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "9121:9121"
+    environment:
+      NODE_ENV: "production"
+      PORT: "8080"
+      METRICS_PORT: "9121"
+      REDIS_URL: "redis://redis:6379/0"
+    depends_on:
+      redis:
+        condition: service_healthy
+
 volumes:
   postgres_data:
   redis_data:
