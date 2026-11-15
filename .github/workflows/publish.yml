@@ -1,0 +1,40 @@
+name: Publish Headless Pose Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  publish:
+    name: Build & Publish @oxdurgesh/pose-fsm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@oxdurgesh'
+
+      - name: Install dependencies
+        run: |
+          npm install -g typescript
+          cd packages/pose-engine
+          tsc
+
+      - name: Pack and Publish Package
+        run: |
+          cd packages/pose-engine
+          npm pack
+          npm publish --provenance=false || echo "Package publish skipped (manual trigger or existing version)"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

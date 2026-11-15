@@ -1,0 +1,37 @@
+{
+  "name": "@oxdurgesh/pose-fsm",
+  "version": "1.0.0",
+  "description": "Headless 3D joint kinematics, knee valgus detection, and hysteresis rep counter FSM engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OxDurgeshxO/fitness-platform-architecture.git",
+    "directory": "packages/pose-engine"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "pose-detection",
+    "kinematics",
+    "mediapipe",
+    "biomechanics",
+    "fsm",
+    "rep-counter"
+  ],
+  "author": "Durgesh (OxDurgeshxO)",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
