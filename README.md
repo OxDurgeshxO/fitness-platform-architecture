@@ -191,3 +191,100 @@ Every feature implemented under this harness must pass:
 ## 📄 License
 
 MIT © [Durgesh Dutt Sinha](https://github.com/OxDurgeshxO)
+
+---
+
+## 🏛️ System Architecture Diagrams
+
+### 1. High-Level Platform Topology
+
+```mermaid
+graph TD
+    subgraph ClientLayer["Edge & Client Devices"]
+        MobileApp["Mobile App (iOS / Android)"]
+        WebPortal["Web Portal (React / WebGL)"]
+        Wearable["Wearable Devices (Apple Watch / Garmin / BLE)"]
+        CamStream["Camera Video Feed (WebRTC / RTSP)"]
+    end
+
+    subgraph GatewayLayer["API & Ingestion Gateway"]
+        APIGW["API Gateway (Rate Limiting, JWT Auth)"]
+        WSServer["WebSocket Telemetry Gateway"]
+    end
+
+    subgraph ServiceMesh["Microservices Mesh"]
+        PoseService["Computer Vision Pose Service (MediaPipe / ONNX)"]
+        DietAgent["AI Nutrition & Diet Agent (LLM Reasoning)"]
+        WorkoutEngine["Workout State Engine (Rep & Form Tracker)"]
+        AnalyticsSvc["Biometric & Telemetry Analytics"]
+    end
+
+    subgraph DataLayer["Storage & Cache Infrastructure"]
+        PG["PostgreSQL (User State, Workouts, Diets)"]
+        Redis["Redis (Live Session State & Pub/Sub)"]
+        BlobStore["Cloud Object Storage (Video Keyframes, Models)"]
+        TimeSeries["Time-Series DB (Heart Rate, Cadence)"]
+    end
+
+    MobileApp --> APIGW
+    WebPortal --> APIGW
+    Wearable --> WSServer
+    CamStream --> PoseService
+
+    APIGW --> WorkoutEngine
+    APIGW --> DietAgent
+    WSServer --> AnalyticsSvc
+
+    PoseService --> WorkoutEngine
+    WorkoutEngine --> Redis
+    WorkoutEngine --> PG
+    DietAgent --> PG
+    AnalyticsSvc --> TimeSeries
+```
+
+---
+
+### 2. Real-Time Computer Vision Pose Estimation Pipeline
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Athlete
+    participant Cam as Video Capture (60 FPS)
+    participant Worker as MediaPipe Pose Worker
+    participant Engine as Repetition & Angle Engine
+    participant Audio as Voice Coach Feedback
+    participant Store as Session Store
+
+    User->>Cam: Begin Exercise (e.g. Squat / Deadlift)
+    loop Every Video Frame
+        Cam->>Worker: Raw RGB Frame (1080p / 720p)
+        Worker->>Worker: 33 Skeletal Keypoint Coordinate Extraction
+        Worker->>Engine: Normalized 3D Landmark Vectors (x, y, z, visibility)
+        Engine->>Engine: Compute Joint Angles (Hip, Knee, Ankle, Spine)
+        alt Form Deviation (Knee Valgus / Rounded Back)
+            Engine->>Audio: Trigger Real-time Form Correction Prompt
+            Audio-->>User: "Keep chest up, knees tracking over toes"
+        else Valid Repetition Cycle (Eccentric -> Concentric)
+            Engine->>Engine: Increment Rep Count (Depth Verified)
+            Engine->>Store: Append Rep Metric (Angle Min/Max, Velocity)
+        end
+    end
+    User->>Cam: Exercise Complete
+    Engine->>Store: Persist Set Summary (Reps, Form Accuracy %, Time Under Tension)
+```
+
+---
+
+### 3. Wearable & Biometric Streaming Data Pipeline
+
+```mermaid
+flowchart LR
+    BLE["BLE Sensor / Smartwatch"] -->|HR, HRV, SpO2| Bridge["Mobile BLE Bridge"]
+    Bridge -->|MQTT / WebSocket| TelemetryIngest["Telemetry Ingestion Worker"]
+    TelemetryIngest -->|Raw Metrics| Kafka["Telemetry Event Stream"]
+    Kafka --> StreamAnalytics["Real-time Stress & Strain Analyzer"]
+    Kafka --> TSDB["Time-Series Datastore"]
+    StreamAnalytics -->|Recovery Score Alert| Notif["Push Notification Service"]
+    Notif -->|Alert| AthleteDevice["User Device: Ready for High-Intensity Training"]
+```
