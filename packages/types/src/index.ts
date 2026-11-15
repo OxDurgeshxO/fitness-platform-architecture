@@ -16,7 +16,7 @@ export const UserSchema = z.object({
 export type User = z.infer<typeof UserSchema>;
 
 // --- Exercise Schemas ---
-export const ExerciseTypeSchema = z.enum(["squat", "pushup"]);
+export const ExerciseTypeSchema = z.enum(["squat", "pushup", "romanian_deadlift"]);
 export type ExerciseType = z.infer<typeof ExerciseTypeSchema>;
 
 export const ExerciseSchema = z.object({
@@ -53,7 +53,11 @@ export const FormIssueTypeSchema = z.enum([
   "excessive_forward_lean",
   "asymmetric_weight_shift",
   "incomplete_lockout",
-  "tempo_too_fast"
+  "tempo_too_fast",
+  "pelvic_sag",
+  "elbow_flare",
+  "squatting_the_hinge",
+  "lumbar_rounding"
 ]);
 export type FormIssueType = z.infer<typeof FormIssueTypeSchema>;
 
