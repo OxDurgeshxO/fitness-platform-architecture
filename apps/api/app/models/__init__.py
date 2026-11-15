@@ -1,6 +1,6 @@
-from app.models.base import TimeStampedMixin, SoftDeleteMixin, UUIDMixin
+from app.models.base import SoftDeleteMixin, TimeStampedMixin, UUIDMixin
 from app.models.user import User
-from app.models.workout import WorkoutSession, ExerciseLog
+from app.models.workout import ExerciseLog, WorkoutSession
 
 __all__ = [
     "TimeStampedMixin",

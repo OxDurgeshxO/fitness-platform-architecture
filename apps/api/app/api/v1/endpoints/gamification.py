@@ -1,5 +1,7 @@
 from typing import List
+
 from fastapi import APIRouter
+
 from app.schemas.gamification import Achievement, LeaderboardEntry, UserLevelProgress
 from app.services.gamification_service import GamificationService
 

@@ -1,4 +1,5 @@
 from typing import List, Optional
+
 from pydantic import BaseModel, Field
 
 
@@ -8,7 +9,12 @@ class CoachMessage(BaseModel):
 
 
 class CoachQueryRequest(BaseModel):
-    message: str = Field(..., min_length=2, max_length=1000, json_schema_extra={"example": "How do I fix knee pain during squats?"})
+    message: str = Field(
+        ...,
+        min_length=2,
+        max_length=1000,
+        json_schema_extra={"example": "How do I fix knee pain during squats?"},
+    )
     athlete_context: Optional[dict] = None
     prompt_version: str = "v1.0.0"
 

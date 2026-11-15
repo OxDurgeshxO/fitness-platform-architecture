@@ -1,7 +1,8 @@
 from datetime import timedelta
-from typing import Optional
+
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.core.config import settings
 from app.core.security import create_access_token, get_password_hash, verify_password
 from app.models.user import User
@@ -48,9 +49,7 @@ class AuthService:
 
     def create_token_for_user(self, user: User) -> Token:
         access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-        token_str = create_access_token(
-            subject=str(user.id), expires_delta=access_token_expires
-        )
+        token_str = create_access_token(subject=str(user.id), expires_delta=access_token_expires)
         return Token(
             access_token=token_str,
             token_type="bearer",

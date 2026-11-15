@@ -44,7 +44,11 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W"]
-ignore = []
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/models/user.py" = ["F821"]
+"app/models/workout.py" = ["F821"]
 
 [tool.mypy]
 python_version = "3.11"

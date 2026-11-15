@@ -1,5 +1,17 @@
 from fastapi import APIRouter
-from app.api.v1.endpoints import auth, users, workouts, pose, exercises, nutrition, coach, admin, gamification, ecosystem
+
+from app.api.v1.endpoints import (
+    admin,
+    auth,
+    coach,
+    ecosystem,
+    exercises,
+    gamification,
+    nutrition,
+    pose,
+    users,
+    workouts,
+)
 
 api_router = APIRouter()
 api_router.include_router(auth.router)

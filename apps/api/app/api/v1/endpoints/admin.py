@@ -1,9 +1,10 @@
-import time
 from datetime import datetime, timezone
 from typing import List
+
 from fastapi import APIRouter
-from app.schemas.admin import AdminOverviewResponse, SystemMetrics, ServiceHealth
+
 from app.core.config import settings
+from app.schemas.admin import AdminOverviewResponse, ServiceHealth, SystemMetrics
 
 router = APIRouter(prefix="/admin", tags=["Platform & Admin"])
 
@@ -11,7 +12,7 @@ router = APIRouter(prefix="/admin", tags=["Platform & Admin"])
 @router.get("/overview", response_model=AdminOverviewResponse)
 async def get_admin_overview() -> AdminOverviewResponse:
     now = datetime.now(timezone.utc)
-    
+
     metrics = SystemMetrics(
         total_users_registered=1420,
         active_sessions_today=215,
@@ -21,11 +22,30 @@ async def get_admin_overview() -> AdminOverviewResponse:
     )
 
     services: List[ServiceHealth] = [
-        ServiceHealth(service="MediaPipe Computer Vision", status="operational", latency_ms=12.4, last_checked=now),
-        ServiceHealth(service="PostgreSQL Database Engine", status="operational", latency_ms=4.2, last_checked=now),
-        ServiceHealth(service="Redis Cache & PubSub", status="operational", latency_ms=1.1, last_checked=now),
-        ServiceHealth(service="AI Master Coach Agent", status="operational", latency_ms=14.8, last_checked=now),
-        ServiceHealth(service="Anabolic Nutrition Engine", status="operational", latency_ms=6.3, last_checked=now),
+        ServiceHealth(
+            service="MediaPipe Computer Vision",
+            status="operational",
+            latency_ms=12.4,
+            last_checked=now,
+        ),
+        ServiceHealth(
+            service="PostgreSQL Database Engine",
+            status="operational",
+            latency_ms=4.2,
+            last_checked=now,
+        ),
+        ServiceHealth(
+            service="Redis Cache & PubSub", status="operational", latency_ms=1.1, last_checked=now
+        ),
+        ServiceHealth(
+            service="AI Master Coach Agent", status="operational", latency_ms=14.8, last_checked=now
+        ),
+        ServiceHealth(
+            service="Anabolic Nutrition Engine",
+            status="operational",
+            latency_ms=6.3,
+            last_checked=now,
+        ),
     ]
 
     return AdminOverviewResponse(

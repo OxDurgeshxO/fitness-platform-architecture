@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from app.schemas.nutrition import NutritionPlanRequest, NutritionPlanResponse
 from app.services.nutrition_service import NutritionService
 

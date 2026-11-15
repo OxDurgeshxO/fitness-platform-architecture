@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from app.schemas.coach import CoachQueryRequest, CoachQueryResponse
 from app.services.coach_service import CoachService
 

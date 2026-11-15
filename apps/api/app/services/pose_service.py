@@ -1,5 +1,6 @@
 import math
 from typing import List, Tuple
+
 from app.schemas.workout import PoseAnalysisRequest, PoseAnalysisResponse, PoseLandmark
 
 

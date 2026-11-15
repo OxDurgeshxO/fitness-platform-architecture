@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
-from typing import List, Optional, Dict, Any
+from typing import Any, Dict, List, Optional
+
 from pydantic import BaseModel, ConfigDict, Field
 
 
@@ -25,7 +26,9 @@ class ExerciseLogRead(ExerciseLogBase):
 
 
 class WorkoutSessionBase(BaseModel):
-    title: str = Field(..., min_length=2, max_length=255, json_schema_extra={"example": "Morning Leg Routine"})
+    title: str = Field(
+        ..., min_length=2, max_length=255, json_schema_extra={"example": "Morning Leg Routine"}
+    )
     status: str = Field("in_progress", pattern="^(in_progress|completed|paused)$")
 
 

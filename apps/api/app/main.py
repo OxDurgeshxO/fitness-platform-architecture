@@ -1,8 +1,10 @@
 import time
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator
+
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.api.v1.api import api_router
 from app.core.config import settings
 
@@ -23,6 +25,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+
 # Security Headers & Request Audit Middleware
 @app.middleware("http")
 async def add_security_headers_and_audit(request: Request, call_next):
@@ -35,6 +38,7 @@ async def add_security_headers_and_audit(request: Request, call_next):
     response.headers["X-XSS-Protection"] = "1; mode=block"
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
     return response
+
 
 # CORS Middleware
 if settings.BACKEND_CORS_ORIGINS:

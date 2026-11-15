@@ -1,5 +1,10 @@
 from fastapi import APIRouter
-from app.schemas.ecosystem import HeartRateStreamRequest, HeartRateZoneAnalysis, AthleteDataExportResponse
+
+from app.schemas.ecosystem import (
+    AthleteDataExportResponse,
+    HeartRateStreamRequest,
+    HeartRateZoneAnalysis,
+)
 from app.services.ecosystem_service import EcosystemService
 
 router = APIRouter(prefix="/ecosystem", tags=["Ecosystem & Wearables"])

@@ -1,9 +1,11 @@
 import uuid
 from typing import List, Optional
+
 from sqlalchemy import select
-from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.models.workout import WorkoutSession, ExerciseLog
+from sqlalchemy.orm import selectinload
+
+from app.models.workout import ExerciseLog, WorkoutSession
 from app.repositories.base import BaseRepository
 
 

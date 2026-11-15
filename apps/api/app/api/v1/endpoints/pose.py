@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from app.schemas.workout import PoseAnalysisRequest, PoseAnalysisResponse
 from app.services.pose_service import PoseAnalysisService
 

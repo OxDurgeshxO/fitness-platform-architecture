@@ -1,4 +1,5 @@
 from typing import List
+
 from app.schemas.nutrition import (
     MacroDistribution,
     MealItem,
@@ -81,8 +82,20 @@ class NutritionService:
                 timing="08:00 AM",
                 target_calories=int(round(target_calories * 0.25)),
                 recommended_items=[
-                    MealItem(name="Eggs (3 whole + 2 whites)", calories=280, protein_grams=28, carbs_grams=2, fat_grams=16),
-                    MealItem(name="Rolled Oats with berries (60g)", calories=220, protein_grams=7, carbs_grams=40, fat_grams=4),
+                    MealItem(
+                        name="Eggs (3 whole + 2 whites)",
+                        calories=280,
+                        protein_grams=28,
+                        carbs_grams=2,
+                        fat_grams=16,
+                    ),
+                    MealItem(
+                        name="Rolled Oats with berries (60g)",
+                        calories=220,
+                        protein_grams=7,
+                        carbs_grams=40,
+                        fat_grams=4,
+                    ),
                 ],
             ),
             MealSchedule(
@@ -90,9 +103,27 @@ class NutritionService:
                 timing="01:00 PM",
                 target_calories=int(round(target_calories * 0.35)),
                 recommended_items=[
-                    MealItem(name="Grilled Chicken Breast / Tofu (200g)", calories=320, protein_grams=54, carbs_grams=0, fat_grams=6),
-                    MealItem(name="Steamed Jasmine Rice / Quinoa (180g)", calories=230, protein_grams=5, carbs_grams=50, fat_grams=1),
-                    MealItem(name="Steamed Broccoli & Olive Oil (100g)", calories=85, protein_grams=3, carbs_grams=6, fat_grams=5),
+                    MealItem(
+                        name="Grilled Chicken Breast / Tofu (200g)",
+                        calories=320,
+                        protein_grams=54,
+                        carbs_grams=0,
+                        fat_grams=6,
+                    ),
+                    MealItem(
+                        name="Steamed Jasmine Rice / Quinoa (180g)",
+                        calories=230,
+                        protein_grams=5,
+                        carbs_grams=50,
+                        fat_grams=1,
+                    ),
+                    MealItem(
+                        name="Steamed Broccoli & Olive Oil (100g)",
+                        calories=85,
+                        protein_grams=3,
+                        carbs_grams=6,
+                        fat_grams=5,
+                    ),
                 ],
             ),
             MealSchedule(
@@ -100,8 +131,20 @@ class NutritionService:
                 timing="05:30 PM",
                 target_calories=int(round(target_calories * 0.15)),
                 recommended_items=[
-                    MealItem(name="Whey / Plant Isolate Shake (1 scoop)", calories=130, protein_grams=26, carbs_grams=2, fat_grams=1),
-                    MealItem(name="Medium Banana", calories=105, protein_grams=1, carbs_grams=27, fat_grams=0),
+                    MealItem(
+                        name="Whey / Plant Isolate Shake (1 scoop)",
+                        calories=130,
+                        protein_grams=26,
+                        carbs_grams=2,
+                        fat_grams=1,
+                    ),
+                    MealItem(
+                        name="Medium Banana",
+                        calories=105,
+                        protein_grams=1,
+                        carbs_grams=27,
+                        fat_grams=0,
+                    ),
                 ],
             ),
             MealSchedule(
@@ -109,9 +152,27 @@ class NutritionService:
                 timing="08:30 PM",
                 target_calories=int(round(target_calories * 0.25)),
                 recommended_items=[
-                    MealItem(name="Baked Salmon Fillet / Paneer (180g)", calories=360, protein_grams=36, carbs_grams=0, fat_grams=22),
-                    MealItem(name="Roasted Sweet Potato (150g)", calories=130, protein_grams=2, carbs_grams=30, fat_grams=0),
-                    MealItem(name="Mixed Green Salad with Avocado", calories=110, protein_grams=2, carbs_grams=4, fat_grams=9),
+                    MealItem(
+                        name="Baked Salmon Fillet / Paneer (180g)",
+                        calories=360,
+                        protein_grams=36,
+                        carbs_grams=0,
+                        fat_grams=22,
+                    ),
+                    MealItem(
+                        name="Roasted Sweet Potato (150g)",
+                        calories=130,
+                        protein_grams=2,
+                        carbs_grams=30,
+                        fat_grams=0,
+                    ),
+                    MealItem(
+                        name="Mixed Green Salad with Avocado",
+                        calories=110,
+                        protein_grams=2,
+                        carbs_grams=4,
+                        fat_grams=9,
+                    ),
                 ],
             ),
         ]

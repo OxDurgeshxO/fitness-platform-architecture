@@ -1,5 +1,7 @@
 from typing import List, Optional
+
 from fastapi import APIRouter, HTTPException, Query, status
+
 from app.services.exercise_catalog import ExerciseCatalogService, ExerciseProfile
 
 router = APIRouter(prefix="/exercises", tags=["Exercise Catalog"])
@@ -7,7 +9,9 @@ router = APIRouter(prefix="/exercises", tags=["Exercise Catalog"])
 
 @router.get("/", response_model=List[ExerciseProfile])
 async def list_exercises(
-    category: Optional[str] = Query(None, description="Filter by category (strength, hypertrophy, core)")
+    category: Optional[str] = Query(
+        None, description="Filter by category (strength, hypertrophy, core)"
+    ),
 ) -> List[ExerciseProfile]:
     if category:
         return ExerciseCatalogService.list_by_category(category)

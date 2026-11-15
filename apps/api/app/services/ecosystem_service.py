@@ -1,5 +1,10 @@
 from datetime import datetime, timezone
-from app.schemas.ecosystem import HeartRateStreamRequest, HeartRateZoneAnalysis, AthleteDataExportResponse
+
+from app.schemas.ecosystem import (
+    AthleteDataExportResponse,
+    HeartRateStreamRequest,
+    HeartRateZoneAnalysis,
+)
 
 
 class EcosystemService:
@@ -8,9 +13,11 @@ class EcosystemService:
         # Tanaka formula for Max HR
         max_hr = int(round(208.0 - (0.7 * req.athlete_age)))
         hrr = max(30, max_hr - req.resting_heart_rate)
-        
+
         # Karvonen % HRR
-        hrr_pct = round(max(0.0, min(1.0, (req.current_heart_rate - req.resting_heart_rate) / float(hrr))), 2)
+        hrr_pct = round(
+            max(0.0, min(1.0, (req.current_heart_rate - req.resting_heart_rate) / float(hrr))), 2
+        )
 
         if hrr_pct < 0.60:
             zone = "Zone 1 (Active Recovery)"

@@ -1,20 +1,21 @@
 import uuid
 from typing import Annotated, List
+
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.api.v1.dependencies import get_current_active_user
 from app.core.database import get_db
 from app.models.user import User
-from app.models.workout import WorkoutSession, ExerciseLog
+from app.models.workout import ExerciseLog, WorkoutSession
 from app.repositories.workout_repository import WorkoutRepository
 from app.schemas.workout import (
-    WorkoutSessionCreate,
-    WorkoutSessionRead,
-    WorkoutSessionUpdate,
     ExerciseLogCreate,
     ExerciseLogRead,
     QuickWorkoutLogRequest,
     QuickWorkoutLogResponse,
+    WorkoutSessionCreate,
+    WorkoutSessionRead,
 )
 
 router = APIRouter(prefix="/workouts", tags=["Workouts"])
@@ -61,7 +62,9 @@ async def get_workout_session(
     return WorkoutSessionRead.model_validate(session)
 
 
-@router.post("/{workout_id}/logs", response_model=ExerciseLogRead, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/{workout_id}/logs", response_model=ExerciseLogRead, status_code=status.HTTP_201_CREATED
+)
 async def log_exercise(
     workout_id: uuid.UUID,
     log_in: ExerciseLogCreate,
@@ -84,10 +87,7 @@ async def log_exercise(
     created_log = await repo.add_exercise_log(log)
 
     # Increment aggregate totals
-    await repo.update(
-        session,
-        {"total_reps": session.total_reps + log_in.reps}
-    )
+    await repo.update(session, {"total_reps": session.total_reps + log_in.reps})
 
     return ExerciseLogRead.model_validate(created_log)
 
@@ -102,10 +102,12 @@ MET_VALUES = {
 }
 
 
-@router.post("/quick-log", response_model=QuickWorkoutLogResponse, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/quick-log", response_model=QuickWorkoutLogResponse, status_code=status.HTTP_201_CREATED
+)
 async def log_quick_set(payload: QuickWorkoutLogRequest) -> QuickWorkoutLogResponse:
     from datetime import datetime, timezone
-    
+
     met = MET_VALUES.get(payload.exercise_type.lower(), 5.0)
     duration_min = max(0.1, payload.duration_seconds / 60.0)
     base_cals = (met * 3.5 * payload.athlete_weight_kg / 200.0) * duration_min
