@@ -1,4 +1,7 @@
 name: Architecture Docs Validation
+permissions:
+  contents: read
+
 
 on:
   push:
