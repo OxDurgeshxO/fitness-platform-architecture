@@ -1,16 +1,16 @@
-name: Architecture Docs Validation
+name: Architecture & Platform CI
+
 permissions:
   contents: read
 
-
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
-  validate:
+  validate-architecture:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -19,3 +19,79 @@ jobs:
           echo "Verifying architecture specifications..."
           ls -la *.md
           echo "All architecture documents verified."
+
+  pose-engine-and-kinematics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build Pose Engine Package
+        run: |
+          cd packages/pose-engine
+          npm install
+          npm run build
+      - name: Run Kinematics Verification Test
+        run: |
+          npm install -g tsx
+          tsx src/frontend/src/tests/test_kinematics.ts
+
+  backend-lint-and-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres_password
+          POSTGRES_DB: ai_gym_test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    defaults:
+      run:
+        working-directory: apps/api
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-asyncio ruff
+
+      - name: Lint with Ruff
+        run: |
+          ruff check app/
+
+      - name: Run Test Suite
+        env:
+          DATABASE_URL: postgresql+asyncpg://postgres:postgres_password@localhost:5432/ai_gym_test_db
+          REDIS_URL: redis://localhost:6379/0
+          SECRET_KEY: test-secret-key-32-bytes-minimum-length
+        run: |
+          pytest tests/ -v

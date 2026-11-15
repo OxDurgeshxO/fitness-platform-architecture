@@ -49,6 +49,36 @@ flowchart TD
 
 ---
 
+## 🛠️ Tech Stack & Production Foundations
+
+**Databases:** PostgreSQL · MongoDB · Redis · pgvector / Qdrant  
+**DevOps:** Docker · Kubernetes · AWS · Terraform · GitHub Actions  
+**Monitoring:** Prometheus · Grafana · ELK Stack  
+
+---
+
+## 🚀 Development Phases
+
+```text
+[x] Phase 1: Foundation          → Auth · Users · DB · API Gateway · CI/CD (Completed)
+[x] Phase 2: Core Fitness        → Workout Planner · Exercise Library · Analytics (Completed)
+[x] Phase 3: AI Vision           → Pose Detection · Rep Counter · Form Correction (Completed)
+[x] Phase 4: Nutrition           → AI Nutritionist · Meal Generator · Calorie Tracking (Completed)
+[x] Phase 5: Intelligence        → AI Chat Coach · Voice Assistant · Recommendations (Completed)
+[x] Phase 6: Platform            → Admin · Security Headers · Audit Middleware (Completed)
+[x] Phase 7: Growth              → Gamification · Achievements · Leaderboards (Completed)
+[x] Phase 8: Ecosystem           → Wearables · IoT · Biometrics · Export (Completed)
+```
+
+### Active Local Services
+
+- **Web Frontend**: [http://localhost:3000/](http://localhost:3000/) (Next.js 14 App Router)
+- **FastAPI Backend**: [http://127.0.0.1:8000/](http://127.0.0.1:8000/) (Clean Architecture)
+- **Interactive Swagger Docs**: [http://127.0.0.1:8000/api/v1/docs](http://127.0.0.1:8000/api/v1/docs)
+- **E2E & Unit Test Suite**: 22/22 tests passing (`pytest tests/ -v`)
+
+---
+
 ## 📱 Application Modules (Full-Stack Codebase)
 
 Located in [`src/frontend/src/pages/`](./src/frontend/src/pages/):
