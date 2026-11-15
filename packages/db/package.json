@@ -1,0 +1,26 @@
+{
+  "name": "@fitness/db",
+  "version": "1.0.0",
+  "description": "PostgreSQL schema, Drizzle ORM models, migrations, and seed fixtures",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "node dist/seed.js"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.39.3",
+    "pg": "^8.13.3",
+    "@fitness/types": "workspace:*"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.30.4",
+    "@types/pg": "^8.11.11",
+    "@types/node": "^22.13.0",
+    "typescript": "^5.7.3"
+  }
+}
