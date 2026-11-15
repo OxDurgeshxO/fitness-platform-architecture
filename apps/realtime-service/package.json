@@ -1,0 +1,25 @@
+{
+  "name": "@fitness/realtime-service",
+  "version": "1.0.0",
+  "description": "WebSocket service for live pose frame streaming and real-time coaching feedback",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@fitness/types": "workspace:*",
+    "@fitness/core": "workspace:*",
+    "@fitness/cv": "workspace:*",
+    "@fitness/ai": "workspace:*",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.14",
+    "@types/node": "^22.13.0",
+    "typescript": "^5.7.3"
+  }
+}
