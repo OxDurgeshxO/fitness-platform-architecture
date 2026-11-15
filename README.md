@@ -18,6 +18,37 @@ This repository is a **unified powerhouse** containing both:
 
 ---
 
+## 🏛️ System Architecture
+
+```mermaid
+flowchart TD
+    subgraph Client["Client Tier (React 19 + Three.js + Vite)"]
+        UI["Fitness & Health UI Modules
+(Analyzer, Trainer, Dietician, IoT)"]
+        CV["Client-Side Pose & Rep Tracking
+(Computer Vision / Recharts)"]
+    end
+
+    subgraph Core["Core Application & State"]
+        Router["App Router & State Machine"]
+        Telemetry["Health & Sensor Telemetry Pipeline"]
+        Recommender["Personalized Fitness Recommendation Engine"]
+    end
+
+    subgraph AgentOS["Autonomous Agent Harness"]
+        Antigravity["Google Antigravity Custom Skills"]
+        Cursor["Cursor System Rules (.cursorrules)"]
+        OSPrompt["Autonomous Engineering Master Prompt
+(GENERAL_CODING_OS.md)"]
+    end
+
+    Client --> Core
+    AgentOS -.->|"Orchestrates & Maintains"| Core
+    AgentOS -.->|"Governs Development"| Client
+```
+
+---
+
 ## 📱 Application Modules (Full-Stack Codebase)
 
 Located in [`src/frontend/src/pages/`](./src/frontend/src/pages/):
