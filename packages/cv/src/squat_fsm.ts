@@ -173,6 +173,10 @@ export class SquatRepCounter {
     return this.repCount;
   }
 
+  public getState(): RepetitionState {
+    return this.state;
+  }
+
   public getCompletedReps(): RepetitionRecord[] {
     return [...this.completedReps];
   }
