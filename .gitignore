@@ -14,14 +14,16 @@ __pycache__/
 env/
 venv/
 .venv/
-build/
+# Python build artifacts
+/build/
 develop-eggs/
-dist/
+/dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+/lib/
+/lib64/
+!**/src/lib/
 parts/
 sdist/
 var/
@@ -64,3 +66,6 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+*.tsbuildinfo
+
