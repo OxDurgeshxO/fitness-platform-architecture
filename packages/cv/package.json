@@ -1,0 +1,20 @@
+{
+  "name": "@fitness/cv",
+  "version": "1.0.0",
+  "description": "Pose estimation, joint kinematics, and biomechanical rep counting state machines",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "@fitness/types": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "@types/node": "^22.13.0"
+  }
+}

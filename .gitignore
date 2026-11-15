@@ -1,5 +1,7 @@
 # Dependencies & Package Managers
 node_modules/
+**/node_modules/
+**/dist/
 .pnpm-store/
 .pnpm-debug.log*
 
