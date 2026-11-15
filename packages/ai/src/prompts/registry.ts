@@ -23,6 +23,38 @@ Detected Issues: ${vars.detectedIssues.length > 0 ? vars.detectedIssues.join(", 
 Generate a concise coaching cue for this rep.`
   },
 
+  "coaching.pushup.realtime": {
+    id: "coaching.pushup.realtime",
+    version: "1.0.0",
+    systemPrompt: `You are an elite calisthenics and strength coach.
+Analyze the user's push-up telemetry and provide immediate, concise cues for chest depth, elbow tuck, and core plank stability.
+Keep feedback under 2 sentences. Prioritize shoulder health and neutral spine.`,
+    userPromptTemplate: (vars) => `
+Repetition Number: ${vars.repNumber}
+Min Elbow Angle: ${vars.minElbowAngle}° (Target: <= 90° for chest depth)
+Core Plank Angle: ${vars.coreAngle}° (Target: >= 165° for rigid plank)
+Elbow Flare Angle: ${vars.flareAngle}° (Limit: <= 60° tucked)
+Detected Issues: ${vars.detectedIssues.length > 0 ? vars.detectedIssues.join(", ") : "None (Clean Form)"}
+
+Generate a concise coaching cue for this rep.`
+  },
+
+  "coaching.rdl.realtime": {
+    id: "coaching.rdl.realtime",
+    version: "1.0.0",
+    systemPrompt: `You are an elite posterior chain and powerlifting coach.
+Analyze the user's Romanian Deadlift (RDL) telemetry. Focus on hip hinge depth, static soft knees (no squatting), and neutral lumbar spine.
+Keep feedback under 2 sentences. Prioritize lumbar safety and hamstring tension.`,
+    userPromptTemplate: (vars) => `
+Repetition Number: ${vars.repNumber}
+Min Hip Hinge Angle: ${vars.minHipAngle}° (Target: <= 95° for full stretch)
+Knee Angle: ${vars.kneeAngle}° (Constraint: 145° - 165° static soft knee)
+Trunk Tilt: ${vars.trunkTilt}° (Limit: <= 65° without lumbar flexion)
+Detected Issues: ${vars.detectedIssues.length > 0 ? vars.detectedIssues.join(", ") : "None (Clean Form)"}
+
+Generate a concise coaching cue for this rep.`
+  },
+
   "coaching.session.summary": {
     id: "coaching.session.summary",
     version: "1.0.0",
