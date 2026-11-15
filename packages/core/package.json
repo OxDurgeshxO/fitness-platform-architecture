@@ -1,0 +1,22 @@
+{
+  "name": "@fitness/core",
+  "version": "1.0.0",
+  "description": "Workout, user, and progress domain logic",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "@fitness/types": "workspace:*",
+    "@fitness/cv": "workspace:*",
+    "@fitness/ai": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "@types/node": "^22.13.0"
+  }
+}
