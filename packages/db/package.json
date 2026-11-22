@@ -13,7 +13,7 @@
     "db:seed": "node dist/seed.js"
   },
   "dependencies": {
-    "drizzle-orm": "^0.39.3",
+    "drizzle-orm": "^0.45.4",
     "pg": "^8.13.3",
     "@fitness/types": "workspace:*"
   },
